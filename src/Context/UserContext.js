@@ -5,39 +5,45 @@ import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWith
 import { useState } from "react";
 import { useEffect } from "react";
 
-const authContext = createContext();
+export const authContext = createContext();
 
 const auth = getAuth(app);
 
 const UserContext = ({ children }) => {
-
-    const [user, setUser] = useState({})
+  
+  const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(true)
 
   const popUpSignIn = (provider) => {
+    setLoading(true)
     return signInWithPopup(auth, provider);
   };
 
   const createUserViaEmail = (email, password) => {
+    setLoading(true)
     return createUserWithEmailAndPassword(auth, email, password);
   }
 
   const signInUserViaEmail = (email, password) => {
+    setLoading(true)
     return signInWithEmailAndPassword(auth, email, password);
   }
 
   const logOut = () => {
+    setLoading(true)
     return signOut(auth);
   }
 
   useEffect(()=>{
     const unsubscribe = onAuthStateChanged(auth, currentUser =>{
         setUser(currentUser)
+        setLoading(false)
     });
 
     return unsubscribe()
   } , [])
 
-  const authInfo = {user, popUpSignIn, createUserViaEmail, signInUserViaEmail, logOut};
+  const authInfo = {user, auth, loading, popUpSignIn, createUserViaEmail, signInUserViaEmail, logOut};
 
   return (
     <authContext.Provider value={authInfo}>
