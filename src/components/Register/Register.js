@@ -1,7 +1,6 @@
 import { Button, Card, Label, TextInput } from "flowbite-react";
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaGoogle, FaGithub } from "react-icons/fa";
 
 const Register = () => {
   return (
@@ -9,6 +8,30 @@ const Register = () => {
         <h1 className="text-3xl font-bold my-5 text-center">Please Register</h1>
       <Card>
         <form className="flex flex-col gap-4">
+        <div>
+            <div className="mb-2 block">
+              <Label htmlFor="name" value="Your name" />
+            </div>
+            <TextInput
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Your name"
+            required={true}
+            />
+          </div>
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="photoUrl" value="Photo url" />
+            </div>
+            <TextInput
+            id="photoUrl"
+            name="photoUrl"
+            type="text"
+            placeholder="Your Photo Url"
+            required={true}
+            />
+          </div>
           <div>
             <div className="mb-2 block">
               <Label htmlFor="email1" value="Your email" />
