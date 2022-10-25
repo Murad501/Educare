@@ -11,7 +11,7 @@ const Header = () => {
         setLightMode(!lightMode)
     }
   return (
-    <Navbar>
+    <Navbar className="py-6">
       <Link className="flex justify-center items-center" to='/'>
         <FaBookOpen className="mr-3 h-6 sm:h-9 text-2xl"></FaBookOpen>
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
@@ -26,9 +26,9 @@ const Header = () => {
         <Link onClick={setMode}>
         {
             lightMode ? 
-            <div className="flex justify-center items-center gap-2 border px-2">Light <FaSun></FaSun></div>
+            <div className="flex justify-center items-center gap-2 border px-2 w-20 mx-auto">Light <FaSun></FaSun></div>
             :
-            <div className="flex justify-center items-center gap-2 border px-2">Dark <FaMoon></FaMoon></div>
+            <div className="flex justify-center items-center gap-2 border px-2 w-20 mx-auto">Dark <FaMoon></FaMoon></div>
         }
         </Link>
       </Navbar.Collapse>
