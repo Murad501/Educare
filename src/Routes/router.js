@@ -6,6 +6,7 @@ import Home from "../components/Home/Home";
 import LogIn from "../components/LogIn/LogIn";
 import Register from "../components/Register/Register";
 import Main from "../Layout/Main";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'courses',
-                element: <Courses></Courses>
+                element: <PrivateRoute><Courses></Courses></PrivateRoute>
             },
             {
                 path: 'faq',

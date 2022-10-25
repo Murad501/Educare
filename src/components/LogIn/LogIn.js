@@ -4,10 +4,15 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useContext } from "react";
 import { authContext } from "../../Context/UserContext";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const LogIn = () => {
     const {popUpSignIn, signInUserViaEmail} = useContext(authContext)
+    const [error, setError] = useState('')
+    const navigate = useNavigate()
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/'
 
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
@@ -15,20 +20,22 @@ const LogIn = () => {
     const handleGoogleLogIn = () =>{
         popUpSignIn(googleProvider)
         .then((result) => {
-            console.log( result.user,'user login successfully')
+          setError('')
+          navigate(from, {replace: true})
         })
         .catch(error => {
-            console.error(error)
+            setError(error.message)
         })
     }
 
     const handleGithubLogIn = () =>{
       popUpSignIn(githubProvider)
       .then((result) => {
-        console.log( result.user,'user login successfully')
+        setError('')
+        navigate(from, {replace: true})
     })
     .catch(error => {
-        console.error(error)
+      setError(error.message)
     })
   }
 
@@ -41,10 +48,12 @@ const LogIn = () => {
 
     signInUserViaEmail(email, password)
     .then(result=>{
-      console.log(result.user, 'user successfully log in')
+      setError('')
+      form.reset()
+      navigate(from, {replace: true})
     })
     .catch(error=>{
-      console.error(error)
+      setError(error.message)
     })
   }
 
@@ -78,6 +87,9 @@ const LogIn = () => {
             />
           </div>
           <Link className="text-sm text-right text-blue-700">Forgot password?</Link>
+          {
+            error && <p className="text-red-700 text-center">{error}</p>
+          }
           <Button type="submit">Log in</Button>
         </form>
         <p className="text-center">New here? <Link to='/register' className="text-blue-700">create account</Link></p>

@@ -1,13 +1,17 @@
 import { updateProfile } from "firebase/auth";
 import { Button, Card, Label, TextInput } from "flowbite-react";
 import React from "react";
+import { useState } from "react";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../../Context/UserContext";
 
 const Register = () => {
+  const [error, setError] = useState('')
 
   const {createUserViaEmail, auth} = useContext(authContext)
+
+  const navigate = useNavigate()
 
   const handleRegister = (event) =>{
     event.preventDefault()
@@ -23,14 +27,14 @@ const Register = () => {
       updateProfile(auth.currentUser, {
         displayName: name, photoURL: imageUrl
       }).then(() => {
-        console.log('user name and photo url update successfully')
+        
       }).catch((error) => {
-        console.error(error)
+        setError(error.message)
       });
-      console.log('user created successfully')
+      navigate('/')
     })
     .catch(error=>{
-      console.error(error)
+      setError(error.message)
     })
   }
 
@@ -87,6 +91,9 @@ const Register = () => {
             required={true} 
             />
           </div>
+          {
+            error && <p className="text-red-700 text-center">{error}</p>
+          }
           <Button type="submit">Register</Button>
         </form>
         <p className="text-center">Already have an account? <Link to='/login' className="text-blue-700">register</Link></p>

@@ -11,7 +11,7 @@ const auth = getAuth(app);
 
 const UserContext = ({ children }) => {
   
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true)
 
   const popUpSignIn = (provider) => {
@@ -40,7 +40,7 @@ const UserContext = ({ children }) => {
         setLoading(false)
     });
 
-    return unsubscribe()
+    return () => unsubscribe()
   } , [])
 
   const authInfo = {user, auth, loading, popUpSignIn, createUserViaEmail, signInUserViaEmail, logOut};

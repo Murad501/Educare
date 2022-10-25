@@ -1,7 +1,7 @@
-import { Button, Navbar } from "flowbite-react";
+import { Navbar } from "flowbite-react";
 import React, { useContext } from "react";
 import { useState } from "react";
-import { FaBookOpen, FaSun, FaMoon } from "react-icons/fa";
+import { FaCode, FaSun, FaMoon } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { authContext } from "../../Context/UserContext";
 import "./Header.css"
@@ -9,13 +9,14 @@ import ReactTooltip from 'react-tooltip';
 
 const Header = () => {
   const [lightMode, setLightMode] = useState(true);
-
   const { user, logOut } = useContext(authContext);
+
 
   const handleLogOut = () => {
     logOut()
     .then(()=>{
       console.log('user log out successful')
+
     })
     .catch(error=>{
       console.error(error)
@@ -26,10 +27,10 @@ const Header = () => {
     setLightMode(!lightMode);
   };
   return (
-    <Navbar className="py-7 flex justify-center items-center">
+    <Navbar className="py-8 flex justify-center items-center">
       <Link className="flex justify-center items-center" to="/">
-        <FaBookOpen className="mr-3 h-6 sm:h-9 text-2xl"></FaBookOpen>
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+        <FaCode className="mr-3 h-6 sm:h-9 text-6xl font-bold"></FaCode>
+        <span className="self-center whitespace-nowrap text-3xl font-semibold dark:text-white">
           Educare
         </span>
       </Link>
@@ -53,12 +54,12 @@ const Header = () => {
          {
          user?.uid ? 
             <div className="flex gap-3">
-                <img data-tip={user.name}  src={user.photoURL} className="mr-3 h-6 sm:h-9 rounded-full" alt="" />
+                <img data-tip={user.displayName}  src={user.photoURL} className="mr-3 h-6 sm:h-9 rounded-full" alt="" />
                 <ReactTooltip></ReactTooltip>
-                <Button onClick={handleLogOut}>Log Out</Button>
+                <Link className= "hover:text-blue-700" onClick={handleLogOut}>Log Out</Link>
             </div>
           :
-            <Link to="login">Login</Link>
+            <Link className= "hover:text-blue-700" to="login">Login</Link>
           } 
         </div>  
       </Navbar.Collapse>
