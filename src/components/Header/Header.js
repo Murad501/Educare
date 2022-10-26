@@ -27,7 +27,7 @@ const Header = () => {
     setLightMode(!lightMode);
   };
   return (
-    <Navbar className="py-8 flex justify-center items-center">
+    <Navbar className="py-6 flex justify-center items-center">
       <Link className="flex justify-center items-center" to="/">
         <FaCode className="mr-3 h-6 sm:h-9 text-6xl font-bold"></FaCode>
         <span className="self-center whitespace-nowrap text-3xl font-semibold dark:text-white">

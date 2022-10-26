@@ -96,7 +96,7 @@ const Register = () => {
           }
           <Button type="submit">Register</Button>
         </form>
-        <p className="text-center">Already have an account? <Link to='/login' className="text-blue-700">register</Link></p>
+        <p className="text-center">Already have an account? <Link to='/login' className="text-blue-700">Login</Link></p>
       </Card>
     </div>
   );
