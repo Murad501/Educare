@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Blog from "../components/Blog/Blog";
 import CategoryPage from "../components/CategoryPage/CategoryPage";
+import CourseDetailsFull from "../components/CourseDetailsFull/CourseDetailsFull";
 import Courses from "../components/Courses/Courses";
 import FAQ from "../components/FAQ/FAQ";
 import LogIn from "../components/LogIn/LogIn";
@@ -27,6 +28,11 @@ const router = createBrowserRouter([
                 path: 'category/:id',
                 loader: async({params})=> fetch(`https://assignment-server-site-murad501.vercel.app/category/${params.id}`),    
                 element: <CategoryPage></CategoryPage>
+            },
+            {
+                path: 'course/:id',
+                loader: async({params})=> fetch(`https://assignment-server-site-murad501.vercel.app/course/${params.id}`),    
+                element: <CourseDetailsFull></CourseDetailsFull>
             },
             {
                 path: 'faq',
