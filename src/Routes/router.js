@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Blog from "../components/Blog/Blog";
 import CategoryPage from "../components/CategoryPage/CategoryPage";
+import CheckOut from "../components/CheckOut/CheckOut";
 import CourseDetailsFull from "../components/CourseDetailsFull/CourseDetailsFull";
 import Courses from "../components/Courses/Courses";
 import FAQ from "../components/FAQ/FAQ";
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
             {
                 path: 'courses',
                 loader: async()=> fetch('https://assignment-server-site-murad501.vercel.app/allCourses'),    
-                element: <PrivateRoute><Courses></Courses></PrivateRoute>
+                element: <Courses></Courses>
             },
             {
                 path: 'category/:id',
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
                 path: 'course/:id',
                 loader: async({params})=> fetch(`https://assignment-server-site-murad501.vercel.app/course/${params.id}`),    
                 element: <CourseDetailsFull></CourseDetailsFull>
+            },
+            {
+                path: 'course/checkout/:id',
+                loader: async({params})=> fetch(`https://assignment-server-site-murad501.vercel.app/course/${params.id}`),    
+                element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>
             },
             {
                 path: 'faq',
