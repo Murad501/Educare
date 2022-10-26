@@ -7,7 +7,7 @@ const CheckOut = () => {
   const course = useLoaderData();
   const { image, title, price, rating } = course;
   return (
-    <div>
+    <div className="mt-6">
       <div className="mx-auto h-48 max-w-lg shadow-md flex p-2 rounded gap-2 relative">
         <img className="h-full w-48" src={image} alt=""></img>
         <div>
