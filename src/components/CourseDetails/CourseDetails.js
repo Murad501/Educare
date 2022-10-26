@@ -3,10 +3,9 @@ import { FaStar, FaUserFriends } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const CourseDetails = ({ course }) => {
-  console.log(course);
   const { image, title, students, rating, price } = course;
   return (
-    <div className="max-w-sm p-3 rounded shadow-lg mb-10">
+    <div style={{height: '450px'}} className="max-w-sm p-3 rounded shadow-lg mb-10 w-full relative">
       <img
         style={{ height: "250px", width: "100%" }}
         src={image}
@@ -23,9 +22,9 @@ const CourseDetails = ({ course }) => {
           <FaStar className="text-base text-yellow-300"></FaStar>
         </div>
       </div>
-      <div className="mt-5 flex justify-between items-center gap-4">
+      <div className="mt-5 flex justify-between items-center gap-4 absolute bottom-3 right-3 left-3">
         <p className="text-2xl font-bold">${price}</p>
-        <Link style={{width: '60%'}} className="font-semibold text-center rounded text-white py-3 bg-blue-500">More Details</Link>
+        <Link to={'/course/' + course.id} style={{width: '60%'}} className="font-semibold text-center rounded text-white py-3 bg-blue-500">More Details</Link>
       </div>
     </div>
   );
