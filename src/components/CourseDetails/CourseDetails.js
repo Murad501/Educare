@@ -24,7 +24,7 @@ const CourseDetails = ({ course }) => {
       </div>
       <div className="mt-5 flex justify-between items-center gap-4 absolute bottom-3 right-3 left-3">
         <p className="text-2xl font-bold">${price}</p>
-        <Link to={'/course/' + course.id} style={{width: '60%'}} className="font-semibold text-center rounded text-white py-3 bg-blue-500">More Details</Link>
+        <Link to={`/checkout/${course.id}`} style={{width: '60%'}} className="font-semibold text-center rounded text-white py-3 bg-blue-500">More Details</Link>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@
 
 ## Website Feature and Functionality What I used
 * Website have an unique name.
-* This website is SPA website.
+* This is SPA website.
 * Website every route are dynamic.
 * I have used tailwind css based flowbite component library.
 * I have used firebase authentication.

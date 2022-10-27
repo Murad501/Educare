@@ -52,7 +52,7 @@ const CourseDetailsFull = () => {
             </div>
             <div className="flex justify-center">
               <Link
-                to={'/checkout/' + course.id}
+                to={`/checkout/${course.id}`}
                 className="mt-7 hidden lg:block  px-6 py-3 rounded text-white font-semibold bg-blue-700"
               >
                 Get Premium Access
@@ -72,7 +72,7 @@ const CourseDetailsFull = () => {
       </div>
       <div className="mt-7 flex justify-center">
         <Link
-          to={'/checkout/' + course.id}
+          to={`/checkout/${course.id}`}
           className="mt-5 lg:hidden mx-auto px-6 py-3 rounded text-white font-semibold bg-blue-700"
         >
           Get Premium Access
